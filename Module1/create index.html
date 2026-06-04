@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Local Community Event Portal</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 20px;
+            }
+            #welcomeBanner {
+                background: blue;
+                color: white;
+                padding: 20px;
+            }
+            .highlight {
+                background: yellow;
+            }
+            nav a {
+                margin-right: 15px;
+                text-decoration: none;
+                color: #333;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#events">Events</a>
+            <a href="#contact">Contact</a>
+            <a href="help.html" target="_blank">Help</a>
+        </nav>
+        <div id="welcomeBanner">
+            <h1>Welcome to the Community Portal</h1>
+            <span style="color: red; font-weight: bold"
+                >Special Offer Today!</span
+            >
+        </div>
+        <section id="home"><h2>Home</h2></section>
+        <section id="events">
+            <h2>Events</h2>
+            <form id="regForm">
+                <input
+                    type="text"
+                    id="userName"
+                    placeholder="Your Name"
+                    required
+                    autofocus
+                /><br /><br />
+                <input type="email" id="userEmail" placeholder="Email" required /><br /><br />
+                <input type="date" id="eventDate" required /><br /><br />
+                <select id="eventSelect">
+                    <option>Select Event</option>
+                    <option value="500">Tech Meetup - ₹500</option>
+                    <option value="300">Art Workshop - ₹300</option>
+                </select><br /><br />
+                <textarea id="userMessage" placeholder="Message"></textarea>
+                <p id="charCount">0 characters</p>
+                <button type="submit" id="submitBtn">Register</button>
+                <output id="confirmation"></output>
+            </form>
+        </section>
+        <section id="contact"><h2>Contact</h2></section>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                console.log("Welcome to the Community Portal");
+
+                const eventSelect = document.getElementById("eventSelect");
+                if (eventSelect) {
+                    eventSelect.addEventListener("change", function () {
+                        if (this.value) alert("Event fee: ₹" + this.value);
+                    });
+                }
+
+                const userMessage = document.getElementById("userMessage");
+                if (userMessage) {
+                    userMessage.addEventListener("input", function () {
+                        document.getElementById("charCount").textContent =
+                            this.value.length + " characters";
+                    });
+                }
+
+                const regForm = document.getElementById("regForm");
+                if (regForm) {
+                    regForm.addEventListener("submit", function (e) {
+                        e.preventDefault();
+                        document.getElementById("confirmation").textContent =
+                            "Registration confirmed!";
+                    });
+                }
+            });
+        </script>
+    </body>
+</html>
